@@ -22,7 +22,9 @@ THE SOFTWARE.
 */
 
 // Include guard
-#pragma once
+#ifndef _CONSUMER_API_HPP_
+#define _CONSUMER_API_HPP_
+ 
 
 ConsumerAPI::ConsumerAPI(void)
 {
@@ -69,3 +71,5 @@ void ConsumerAPI::release(ConsumerKeycode m) {
 void ConsumerAPI::releaseAll(void) {
 	end();
 }
+
+#endif

@@ -22,7 +22,9 @@ THE SOFTWARE.
 */
 
 // Include guard
-#pragma once
+#ifndef _KEYBOARD_API_H_
+#define _KEYBOARD_API_H_
+ 
 
 #include <Arduino.h>
 #include "HID-Settings.h"
@@ -34,7 +36,7 @@ class KeyboardAPI : public Print
 public:
   inline void begin(void);
   inline void end(void);
-  
+
   // Raw Keycode API functions
   inline size_t write(KeyboardKeycode k);
   inline size_t press(KeyboardKeycode k);
@@ -43,7 +45,7 @@ public:
   inline size_t add(KeyboardKeycode k);
   inline size_t releaseAll(void);
   //press(uint8_t key, uint8_t modifier) TODO variadic template
-  
+
   // Print API functions
   inline virtual size_t write(uint8_t k) override;
   inline size_t press(uint8_t k);
@@ -63,3 +65,5 @@ private:
 
 // Implementation is inline
 #include "KeyboardAPI.hpp"
+
+#endif

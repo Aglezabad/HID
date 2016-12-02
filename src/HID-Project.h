@@ -22,10 +22,13 @@ THE SOFTWARE.
 */
 
 // Include guard
-#pragma once
+#ifndef _HIDPROJECT_H_
+#define _HIDPROJECT_H_
+
 
 // Software version
-#define HID_PROJECT_VERSION 243
+//#define HID_PROJECT_VERSION 243
+#define HID_PROJECT_VERSION 300
 
 #if ARDUINO < 10607
 #error HID Project requires Arduino IDE 1.6.7 or greater. Please update your IDE.
@@ -36,17 +39,17 @@ THE SOFTWARE.
 #endif
 
 // Include all HID libraries (.a linkage required to work) properly
-#include "SingleReport/SingleAbsoluteMouse.h"
-#include "MultiReport/AbsoluteMouse.h"
-#include "SingleReport/BootMouse.h"
-#include "MultiReport/ImprovedMouse.h"
-#include "SingleReport/SingleConsumer.h"
-#include "MultiReport/Consumer.h"
-#include "SingleReport/SingleGamepad.h"
-#include "MultiReport/Gamepad.h"
-#include "SingleReport/SingleSystem.h"
-#include "MultiReport/System.h"
-#include "SingleReport/RawHID.h"
+//#include "SingleReport/SingleAbsoluteMouse.h"
+//#include "MultiReport/AbsoluteMouse.h"
+//#include "SingleReport/BootMouse.h"
+//#include "MultiReport/ImprovedMouse.h"
+//#include "SingleReport/SingleConsumer.h"
+//#include "MultiReport/Consumer.h"
+//#include "SingleReport/SingleGamepad.h"
+//#include "MultiReport/Gamepad.h"
+//#include "SingleReport/SingleSystem.h"
+//#include "MultiReport/System.h"
+//#include "SingleReport/RawHID.h"
 #include "SingleReport/BootKeyboard.h"
 #include "MultiReport/ImprovedKeyboard.h"
 #include "SingleReport/SingleNKROKeyboard.h"
@@ -54,3 +57,5 @@ THE SOFTWARE.
 
 // Include Teensy HID afterwards to overwrite key definitions if used
 // TODO include Teensy API if non english keyboard layout was used
+
+#endif

@@ -22,7 +22,9 @@ THE SOFTWARE.
 */
 
 // Include guard
-#pragma once
+#ifndef _IMPROVED_KEYLAYOUT_API_H_
+#define _IMPROVED_KEYLAYOUT_API_H_
+ 
 
 #if !defined(LAYOUT_US_ENGLISH)
 #error This API does not support non US english layouts.
@@ -139,7 +141,7 @@ enum KeyboardKeycode : uint8_t {
     KEY_NON_US			= 0x64,
     KEY_APPLICATION		= 0x65, // Context menu/right click
     KEY_MENU            = 0x65, // Alias
-    
+
     // Most of the following keys will only work with Linux or not at all.
     // F13+ keys are mostly used for laptop functions like ECO key.
     KEY_POWER			= 0x66, // PowerOff (Ubuntu)
@@ -206,7 +208,7 @@ enum KeyboardKeycode : uint8_t {
     KEY_CLEAR_AGAIN		    = 0xA2, // Disabled (Ubuntu)
     KEY_CRSEL_PROPS		    = 0xA3, // Disabled (Ubuntu)
     KEY_EXSEL		        = 0xA4, // Disabled (Ubuntu)
-    
+
     KEY_PAD_00				    = 0xB0, // Disabled (Ubuntu)
     KEY_PAD_000				    = 0xB1, // Disabled (Ubuntu)
     KEY_THOUSANDS_SEPARATOR	    = 0xB2, // Disabled (Ubuntu)
@@ -253,7 +255,7 @@ enum KeyboardKeycode : uint8_t {
     KEYPAD_OCTAL	            = 0xDB, // Disabled (Ubuntu)
     KEYPAD_DECIMAL	            = 0xDC, // Disabled (Ubuntu)
     KEYPAD_HEXADECIMAL	        = 0xDD, // Disabled (Ubuntu)
-    
+
     KEY_LEFT_CTRL		    = 0xE0,
 	KEY_LEFT_SHIFT		    = 0xE1,
 	KEY_LEFT_ALT		    = 0xE2,
@@ -264,7 +266,7 @@ enum KeyboardKeycode : uint8_t {
 	KEY_RIGHT_ALT		    = 0xE6,
 	KEY_RIGHT_GUI		    = 0xE7,
 	KEY_RIGHT_WINDOWS	    = 0xE7, // Alias
-	
+
     // Keyboard HID mappings
 
     //  Reserved (no_event_indicated)
@@ -512,16 +514,16 @@ static const uint8_t _asciimap[] PROGMEM =
 	KEY_RESERVED,           // ETX
 	KEY_RESERVED,           // EOT
 	KEY_RESERVED,           // ENQ
-	KEY_RESERVED,           // ACK  
+	KEY_RESERVED,           // ACK
 	KEY_RESERVED,           // BEL
 	KEY_BACKSPACE,			// BS	Backspace
 	KEY_TAB,				// TAB	Tab
 	KEY_ENTER,				// LF	Enter
-	KEY_RESERVED,           // VT 
-	KEY_RESERVED,           // FF 
-	KEY_RESERVED,           // CR 
-	KEY_RESERVED,           // SO 
-	KEY_RESERVED,           // SI 
+	KEY_RESERVED,           // VT
+	KEY_RESERVED,           // FF
+	KEY_RESERVED,           // CR
+	KEY_RESERVED,           // SO
+	KEY_RESERVED,           // SI
 	KEY_RESERVED,           // DEL
 	KEY_RESERVED,           // DC1
 	KEY_RESERVED,           // DC2
@@ -531,13 +533,13 @@ static const uint8_t _asciimap[] PROGMEM =
 	KEY_RESERVED,           // SYN
 	KEY_RESERVED,           // ETB
 	KEY_RESERVED,           // CAN
-	KEY_RESERVED,           // EM 
+	KEY_RESERVED,           // EM
 	KEY_RESERVED,           // SUB
 	KEY_RESERVED,           // ESC
-	KEY_RESERVED,           // FS 
-	KEY_RESERVED,           // GS 
-	KEY_RESERVED,           // RS 
-	KEY_RESERVED,           // US 
+	KEY_RESERVED,           // FS
+	KEY_RESERVED,           // GS
+	KEY_RESERVED,           // RS
+	KEY_RESERVED,           // US
 
 	KEY_SPACE,		   		// ' ' Space
 	KEY_1|SHIFT,	   		// !
@@ -637,3 +639,4 @@ static const uint8_t _asciimap[] PROGMEM =
 	KEY_RESERVED			// DEL
 };
 
+#endif

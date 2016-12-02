@@ -22,7 +22,9 @@ THE SOFTWARE.
 */
 
 // Include guard
-#pragma once
+#ifndef _DEFKEYBOARD_API_H_
+#define _DEFKEYBOARD_API_H_
+ 
 
 #include "KeyboardAPI.h"
 #include "ConsumerAPI.h"
@@ -75,3 +77,4 @@ private:
 // Implementation is inline
 #include "DefaultKeyboardAPI.hpp"
 
+#endif

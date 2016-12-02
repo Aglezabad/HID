@@ -22,10 +22,12 @@ THE SOFTWARE.
 */
 
 // Include guard
-#pragma once
+#ifndef _DEFKEYBOARD_API_HPP_
+#define _DEFKEYBOARD_API_HPP_
+ 
 
 
-size_t DefaultKeyboardAPI::set(KeyboardKeycode k, bool s) 
+size_t DefaultKeyboardAPI::set(KeyboardKeycode k, bool s)
 {
 	// It's a modifier key
 	if(k >= KEY_LEFT_CTRL && k <= KEY_RIGHT_GUI)
@@ -47,13 +49,13 @@ size_t DefaultKeyboardAPI::set(KeyboardKeycode k, bool s)
 		for (uint8_t i = 0; i < sizeof(_keyReport.keycodes); i++)
 		{
 			auto key = _keyReport.keycodes[i];
-			
+
 			// Is key already in the list or did we found an empty slot?
 			if (s && (key == uint8_t(k) || key == KEY_RESERVED)) {
 				_keyReport.keycodes[i] = k;
 				return 1;
 			}
-			
+
 			// Test the key report to see if k is present. Clear it if it exists.
 			if (!s && (key == k)) {
 				_keyReport.keycodes[i] = KEY_RESERVED;
@@ -61,7 +63,7 @@ size_t DefaultKeyboardAPI::set(KeyboardKeycode k, bool s)
 			}
 		}
 	}
-	
+
 	// No empty/pressed key was found
 	return 0;
 }
@@ -104,7 +106,7 @@ size_t DefaultKeyboardAPI::press(ConsumerKeycode k)
 }
 
 
-size_t DefaultKeyboardAPI::release(ConsumerKeycode k) 
+size_t DefaultKeyboardAPI::release(ConsumerKeycode k)
 {
 	// Release key and send report to host
 	auto ret = remove(k);
@@ -115,14 +117,14 @@ size_t DefaultKeyboardAPI::release(ConsumerKeycode k)
 }
 
 
-size_t DefaultKeyboardAPI::add(ConsumerKeycode k) 
+size_t DefaultKeyboardAPI::add(ConsumerKeycode k)
 {
 	// No 2 byte keys are supported
 	if(k > 0xFF){
 		setWriteError();
 		return 0;
 	}
-	
+
 	// Place the key inside the reserved keyreport position.
 	// This does not work on Windows.
 	_keyReport.reserved = k;
@@ -130,15 +132,17 @@ size_t DefaultKeyboardAPI::add(ConsumerKeycode k)
 }
 
 
-size_t DefaultKeyboardAPI::remove(ConsumerKeycode k) 
+size_t DefaultKeyboardAPI::remove(ConsumerKeycode k)
 {
 	// No 2 byte keys are supported
 	if(k > 0xFF){
 		return 0;
 	}
-	
+
 	// Always release the key, to make it simpler releasing a consumer key
 	// without releasing all other normal keyboard keys.
 	_keyReport.reserved = HID_CONSUMER_UNASSIGNED;
 	return 1;
 }
+
+#endif

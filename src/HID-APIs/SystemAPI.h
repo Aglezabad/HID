@@ -22,7 +22,9 @@ THE SOFTWARE.
 */
 
 // Include guard
-#pragma once
+#ifndef _SYSTEM_API_H_
+#define _SYSTEM_API_H_
+ 
 
 #include <Arduino.h>
 #include "HID-Settings.h"
@@ -89,10 +91,12 @@ public:
 	inline void press(SystemKeycode s);
 	inline void release(void);
 	inline void releaseAll(void);
-	
+
 	// Sending is public in the base class for advanced users.
 	virtual void SendReport(void* data, int length) = 0;
 };
 
 // Implementation is inline
 #include "SystemAPI.hpp"
+
+#endif

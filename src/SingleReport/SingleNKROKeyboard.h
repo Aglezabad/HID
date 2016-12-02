@@ -22,7 +22,7 @@ THE SOFTWARE.
 */
 
 // Include guard
-#pragma once
+ 
 
 #include <Arduino.h>
 #include "PluggableUSB.h"

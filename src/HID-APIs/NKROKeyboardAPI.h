@@ -22,7 +22,9 @@ THE SOFTWARE.
 */
 
 // Include guard
-#pragma once
+#ifndef _NKROKEYBOARD_API_H_
+#define _NKROKEYBOARD_API_H_
+ 
 
 #include "KeyboardAPI.h"
 
@@ -43,7 +45,7 @@ typedef union{
 	uint8_t allkeys[2 + NKRO_KEY_COUNT / 8];
 } HID_NKROKeyboardReport_Data_t;
 
-	
+
 class NKROKeyboardAPI : public KeyboardAPI
 {
 public:
@@ -63,3 +65,4 @@ private:
 // Implementation is inline
 #include "NKROKeyboardAPI.hpp"
 
+#endif

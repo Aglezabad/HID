@@ -22,10 +22,12 @@ THE SOFTWARE.
 */
 
 // Include guard
-#pragma once
+#ifndef _NKROKEYBOARD_API_HPP_
+#define _NKROKEYBOARD_API_HPP_
+ 
 
 
-size_t NKROKeyboardAPI::set(KeyboardKeycode k, bool s) 
+size_t NKROKeyboardAPI::set(KeyboardKeycode k, bool s)
 {
 	// Press keymap key
 	if (k < NKRO_KEY_COUNT){
@@ -52,26 +54,26 @@ size_t NKROKeyboardAPI::set(KeyboardKeycode k, bool s)
 		}
 		return 1;
 	}
-	
+
 	// Its a custom key (outside our keymap)
 	else{
 		// Add k to the key report only if it's not already present
 		// and if there is an empty slot. Remove the first available key.
 		auto key = _keyReport.key;
-		
+
 		// Is key already in the list or did we found an empty slot?
 		if (s && (key == uint8_t(k) || key == KEY_RESERVED)) {
 			_keyReport.key = k;
 			return 1;
 		}
-		
+
 		// Test the key report to see if k is present. Clear it if it exists.
 		if (!s && (key == k)) {
 			_keyReport.key = KEY_RESERVED;
 			return 1;
 		}
 	}
-	
+
 	// No empty/pressed key was found
 	return 0;
 }
@@ -96,3 +98,4 @@ size_t NKROKeyboardAPI::removeAll(void)
 	return ret;
 }
 
+#endif

@@ -22,7 +22,9 @@ THE SOFTWARE.
 */
 
 // Include guard
-#pragma once
+#ifndef _HIDSETTINGS_H_
+#define _HIDSETTINGS_H_
+ 
 
 //================================================================================
 // Settings
@@ -107,4 +109,6 @@ THE SOFTWARE.
 
 #ifndef HID_REPORTID_TEENSY_KEYBOARD
 #define HID_REPORTID_TEENSY_KEYBOARD 9
+#endif
+
 #endif

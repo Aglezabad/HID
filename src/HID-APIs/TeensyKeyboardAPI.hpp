@@ -22,7 +22,9 @@ THE SOFTWARE.
 */
 
 // Include guard
-#pragma once
+#ifndef _TEENSYKEYBOARD_API_HPP_
+#define _TEENSYKEYBOARD_API_HPP_
+ 
 
 // Step #1, decode UTF8 to Unicode code points
 //
@@ -410,7 +412,7 @@ const KEYCODE_TYPE PROGMEM keycodes_ascii[] = {
         M(ASCII_74), M(ASCII_75), M(ASCII_76), M(ASCII_77),
         M(ASCII_78), M(ASCII_79), M(ASCII_7A), M(ASCII_7B),
         M(ASCII_7C), M(ASCII_7D), M(ASCII_7E), M(ASCII_7F)
-};      
+};
 
 #ifdef ISO_8859_1_A0
 const KEYCODE_TYPE PROGMEM keycodes_iso_8859_1[] = {
@@ -440,3 +442,4 @@ const KEYCODE_TYPE PROGMEM keycodes_iso_8859_1[] = {
         M(ISO_8859_1_FC), M(ISO_8859_1_FD), M(ISO_8859_1_FE), M(ISO_8859_1_FF)
 };
 #endif // ISO_8859_1_A0
+#endif

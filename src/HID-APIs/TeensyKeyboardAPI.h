@@ -22,7 +22,9 @@ THE SOFTWARE.
 */
 
 // Include guard
-#pragma once
+#ifndef _TEENSYKEYBOARD_API_H_
+#define _TEENSYKEYBOARD_API_H_
+ 
 
 #include <Arduino.h>
 #include "HID-Settings.h"
@@ -56,7 +58,7 @@ static const uint8_t PROGMEM teensykeyboard_hid_report_desc[] = {
 	0x09, 0xB7,		//  Usage (Stop),
 	0x09, 0xB8,		//  Usage (Eject),
         0x81, 0x02,             //  Input (Data, Variable, Absolute), ;Media keys
-        
+
         // Note: Teensy ledreport was not modified to 8 bit, nor left out when leds are deactivated
         0x95, 0x05,             //  Report Count (5),
         0x75, 0x01,             //  Report Size (1),
@@ -112,10 +114,10 @@ class TeensyKeyboardAPI : public Print
 	void press(uint16_t n);
 	void release(uint16_t n);
 	void releaseAll(void);
-	
+
 	// Sending is public in the base class for advanced users.
     virtual void sendReport(void* data, int length) = 0;
-	
+
 private:
 	KEYCODE_TYPE unicode_to_keycode(uint16_t unicode);
 	KEYCODE_TYPE deadkey_to_keycode(KEYCODE_TYPE keycode);
@@ -132,3 +134,5 @@ private:
 
 // Implementation is inline
 #include "TeensyKeyboardAPI.hpp"
+
+#endif

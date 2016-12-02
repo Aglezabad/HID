@@ -22,7 +22,9 @@ THE SOFTWARE.
 */
 
 // Include guard
-#pragma once
+#ifndef _SYSTEM_API_HPP_
+#define _SYSTEM_API_HPP_
+ 
 
 SystemAPI::SystemAPI(void)
 {
@@ -61,3 +63,4 @@ void SystemAPI::press(SystemKeycode s){
 		SendReport(&s, sizeof(s));
 }
 
+#endif

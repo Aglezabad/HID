@@ -22,7 +22,9 @@ THE SOFTWARE.
 */
 
 // Include guard
-#pragma once
+#ifndef _ABSMOUSE_API_H_
+#define _ABSMOUSE_API_H_
+ 
 
 #include <Arduino.h>
 #include "HID-Settings.h"
@@ -72,7 +74,7 @@ public:
 	inline void press(uint8_t b = MOUSE_LEFT);
 	inline void release(uint8_t b = MOUSE_LEFT);
 	inline bool isPressed(uint8_t b = MOUSE_LEFT);
-	
+
 	// Sending is public in the base class for advanced users.
 	virtual void SendReport(void* data, int length) = 0;
 };
@@ -80,3 +82,4 @@ public:
 // Implementation is inline
 #include "AbsoluteMouseAPI.hpp"
 
+#endif

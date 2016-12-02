@@ -22,7 +22,8 @@ THE SOFTWARE.
 */
 
 // Include guard
-#pragma once
+#ifndef _ABSOLUTEMOUSE_H_
+#define _ABSOLUTEMOUSE_H_
 
 #include <Arduino.h>
 #include "PluggableUSB.h"
@@ -36,8 +37,9 @@ class AbsoluteMouse_ : public AbsoluteMouseAPI
 public:
     AbsoluteMouse_(void);
 
-protected: 
+protected:
     virtual inline void SendReport(void* data, int length) override;
 };
 extern AbsoluteMouse_ AbsoluteMouse;
 
+#endif

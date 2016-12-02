@@ -22,7 +22,9 @@ THE SOFTWARE.
 */
 
 // Include guard
-#pragma once
+#ifndef _KEYBOARD_API_HPP_
+#define _KEYBOARD_API_HPP_
+ 
 
 
 void KeyboardAPI::begin(void)
@@ -42,7 +44,7 @@ void KeyboardAPI::end(void)
 
 
 size_t KeyboardAPI::write(KeyboardKeycode k)
-{	
+{
 	// Press and release key (if press was successfull)
 	auto ret = press(k);
 	if(ret){
@@ -52,7 +54,7 @@ size_t KeyboardAPI::write(KeyboardKeycode k)
 }
 
 
-size_t KeyboardAPI::press(KeyboardKeycode k) 
+size_t KeyboardAPI::press(KeyboardKeycode k)
 {
 	// Press key and send report to host
 	auto ret = add(k);
@@ -63,7 +65,7 @@ size_t KeyboardAPI::press(KeyboardKeycode k)
 }
 
 
-size_t KeyboardAPI::release(KeyboardKeycode k) 
+size_t KeyboardAPI::release(KeyboardKeycode k)
 {
 	// Release key and send report to host
 	auto ret = remove(k);
@@ -74,14 +76,14 @@ size_t KeyboardAPI::release(KeyboardKeycode k)
 }
 
 
-size_t KeyboardAPI::add(KeyboardKeycode k) 
+size_t KeyboardAPI::add(KeyboardKeycode k)
 {
 	// Add key to report
 	return set(k, true);
 }
 
 
-size_t KeyboardAPI::remove(KeyboardKeycode k) 
+size_t KeyboardAPI::remove(KeyboardKeycode k)
 {
 	// Remove key from report
 	return set(k, false);
@@ -100,7 +102,7 @@ size_t KeyboardAPI::releaseAll(void)
 
 
 size_t KeyboardAPI::write(uint8_t k)
-{	
+{
 	// Press and release key (if press was successfull)
 	auto ret = press(k);
 	if(ret){
@@ -110,7 +112,7 @@ size_t KeyboardAPI::write(uint8_t k)
 }
 
 
-size_t KeyboardAPI::press(uint8_t k) 
+size_t KeyboardAPI::press(uint8_t k)
 {
 	// Press key and send report to host
 	auto ret = add(k);
@@ -121,7 +123,7 @@ size_t KeyboardAPI::press(uint8_t k)
 }
 
 
-size_t KeyboardAPI::release(uint8_t k) 
+size_t KeyboardAPI::release(uint8_t k)
 {
 	// Release key and send report to host
 	auto ret = remove(k);
@@ -132,14 +134,14 @@ size_t KeyboardAPI::release(uint8_t k)
 }
 
 
-size_t KeyboardAPI::add(uint8_t k) 
+size_t KeyboardAPI::add(uint8_t k)
 {
 	// Add key to report
 	return set(k, true);
 }
 
 
-size_t KeyboardAPI::remove(uint8_t k) 
+size_t KeyboardAPI::remove(uint8_t k)
 {
 	// Remove key from report
 	return set(k, false);
@@ -156,7 +158,7 @@ size_t KeyboardAPI::set(uint8_t k, bool s){
 	// Read key from ascii lookup table
 	k = pgm_read_byte(_asciimap + k);
 	auto ret = set(KeyboardKeycode(k & ~SHIFT), s);
-	
+
 	// Only add shift if keycode was successfully added before.
 	// Always try to release shift (if used).
 	if((k & SHIFT) && (ret || !s)){
@@ -165,3 +167,4 @@ size_t KeyboardAPI::set(uint8_t k, bool s){
 	return ret;
 }
 
+#endif
